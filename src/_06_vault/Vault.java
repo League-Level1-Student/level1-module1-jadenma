@@ -16,7 +16,20 @@ public class Vault {
 	 * @param guess the code being attempted
 	 * @return true if the guess matches the code, false otherwise
 	 */
+	
 	public boolean tryCode(int guess) {
 		return guess == secret;
+	}
+}
+
+class SecretAgent {
+	int findCode(Vault vault) {
+		for (int i = 0; i <= 1000000; i++) {
+			boolean isCode = vault.tryCode(i);
+			if (isCode) {
+				return i;
+			}
+		}
+		return -1;
 	}
 }
