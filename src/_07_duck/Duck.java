@@ -4,10 +4,14 @@ public class Duck {
 
 	int numberOfFriends;
 	String favoriteFood;
-	void quack() {}
-	void waddle() {}
+	void quack() {
+		System.out.println("QUACK!!");
+	}
+	void waddle() {
+		System.out.println("Waddle");
+	}
 	Duck(String favoriteFood, int numberOfFriends) {
       	this.favoriteFood = favoriteFood;
       	this.numberOfFriends = numberOfFriends;
-}
+	}
 }
