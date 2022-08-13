@@ -11,11 +11,11 @@ public class Planet {
      */
     int x, y, width, height;
     int diameter;
-    String planetColor;
+    Color planetColor;
     int distanceFromSun;
     int orbitalPeriod;
     
-    public Planet(int diameterPixels, String color, int distance, int days) {
+    public Planet(int diameterPixels, Color color, int distance, int days) {
         this.diameter = diameterPixels;
         this.planetColor = color;
         this.distanceFromSun = distance;
@@ -27,31 +27,29 @@ public class Planet {
          * Local variables
          * Reassign or remove these after creating the correct member variables
          */
-        int avgDistFromSun = 1496 / 10;     // You can choose a different scaling than divided by 10
-        int orbitalPeriod = 365;
-        Color color = Color.BLUE;
+        
         
         /*
          * Update position
          */
         double angle = 2 * Math.PI * numDays / orbitalPeriod;
-        x = (int)(Math.cos(angle) * avgDistFromSun);
-        y = (int)(Math.sin(angle) * avgDistFromSun);
+        x = (int)(Math.cos(angle) * distanceFromSun);
+        y = (int)(Math.sin(angle) * distanceFromSun);
         
         /*
          * Draw orbit
          */
-        g.setColor(color);
-        g.drawOval(SolarSystem.CENTER_X - avgDistFromSun,
-                   SolarSystem.CENTER_Y - avgDistFromSun,
-                   2*avgDistFromSun, 2*avgDistFromSun);
+        g.setColor(planetColor);
+        g.drawOval(SolarSystem.CENTER_X - distanceFromSun,
+                   SolarSystem.CENTER_Y - distanceFromSun,
+                   2*distanceFromSun, 2*distanceFromSun);
         
         /*
          * Draw planet
          */
         int centerX = SolarSystem.CENTER_X + x;
         int centerY = SolarSystem.CENTER_Y + y;
-        g.setColor(color);
+        g.setColor(planetColor);
         g.fillOval(centerX - (diameter/2), centerY - (diameter/2), diameter, diameter);
         
         /*
